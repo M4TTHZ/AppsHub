@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.jvm.java
-import com.matheusramalho.appshub.CalculadoraImc.ImcCalculatorActivity
 import com.matheusramalho.appshub.Sorteador.SorteadorActivity
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         // Lista mock de apps.
         val apps = listOf(
-            App("Calculadora IMC", "JAVA"),
             App("Sorteador", "KOTLIN"),
             App("Cep Search", "KOTLIN"),
             App("To-do List", "KOTLIN"),
@@ -43,10 +41,6 @@ class MainActivity : AppCompatActivity() {
         // Adapter recebe a lista e o callback de clique.
         val adapter = AppAdapter(apps) { app ->
             when (app.name) {
-                "Calculadora IMC" -> {
-                    val intent = Intent(this, ImcCalculatorActivity::class.java)
-                    startActivity(intent)
-                }
                 "Sorteador" -> {
                     val intent = Intent(this, SorteadorActivity::class.java)
                     startActivity(intent)
