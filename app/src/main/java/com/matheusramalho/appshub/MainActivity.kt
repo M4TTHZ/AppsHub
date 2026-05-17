@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.appshub.ClimateWeather.ClimateWeatherActivity
+import com.matheusramalho.appshub.Sharedpreferences.SharedPreferencesActivity
 import kotlin.jvm.java
 import com.matheusramalho.appshub.Sorteador.SorteadorActivity
 
@@ -59,8 +60,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "Sharedpreferences" -> {
-//                    val intent = Intent(this, SharedPreferencesActivity::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(this, SharedPreferencesActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }

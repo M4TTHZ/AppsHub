@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppsHub">
         <activity
+            android:name=".Sharedpreferences.SharedPreferencesActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".Sharedpreferences.SharedPreferencesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ClimateWeather.ClimateWeatherActivity"
             android:exported="false" />
         <activity
