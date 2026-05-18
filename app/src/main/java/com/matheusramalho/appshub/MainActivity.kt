@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.appshub.ClimateWeather.ClimateWeatherActivity
+import com.matheusramalho.appshub.SQLite.SQLiteActivity
 import com.matheusramalho.appshub.Sharedpreferences.SharedPreferencesActivity
 import kotlin.jvm.java
 import com.matheusramalho.appshub.Sorteador.SorteadorActivity
@@ -37,7 +38,8 @@ class MainActivity : AppCompatActivity() {
             App("Cep Search", "KOTLIN"),
             App("To-do List", "KOTLIN"),
             App("Climateweather", "KOTLIN"),
-            App("Sharedpreferences", "KOTLIN")
+            App("Sharedpreferences", "KOTLIN"),
+            App("SQLite", "KOTLIN")
         )
 
         // Adapter recebe a lista e o callback de clique.
@@ -61,6 +63,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 "Sharedpreferences" -> {
                     val intent = Intent(this, SharedPreferencesActivity::class.java)
+                    startActivity(intent)
+                }
+                "SQLite" -> {
+                    val intent = Intent(this, SQLiteActivity::class.java)
                     startActivity(intent)
                 }
             }
