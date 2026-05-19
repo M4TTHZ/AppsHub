@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    // Play Services Location (para acessar a localização do dispositivo)
+    implementation("com.google.android.gms:play-services-location:21.2.0")
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     // Conversor Gson (para JSON)

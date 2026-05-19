@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.appshub.ClimateWeather.ClimateWeatherActivity
+import com.matheusramalho.appshub.Localizacoes.LocationActivity
 import com.matheusramalho.appshub.Notificacoes.NotificationsActivity
 import com.matheusramalho.appshub.SQLite.SQLiteActivity
 import com.matheusramalho.appshub.Sharedpreferences.SharedPreferencesActivity
@@ -77,8 +78,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "Localização"  -> {
-//                    val intent = Intent(this, LocationActivity::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(this, LocationActivity::class.java)
+                    startActivity(intent)
                     }
 
             }
