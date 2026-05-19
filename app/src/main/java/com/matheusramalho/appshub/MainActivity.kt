@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.appshub.ClimateWeather.ClimateWeatherActivity
+import com.matheusramalho.appshub.Notificacoes.NotificationsActivity
 import com.matheusramalho.appshub.SQLite.SQLiteActivity
 import com.matheusramalho.appshub.Sharedpreferences.SharedPreferencesActivity
 import kotlin.jvm.java
@@ -39,7 +40,9 @@ class MainActivity : AppCompatActivity() {
             App("To-do List", "KOTLIN"),
             App("Climateweather", "KOTLIN"),
             App("Sharedpreferences", "KOTLIN"),
-            App("SQLite", "KOTLIN")
+            App("SQLite", "KOTLIN"),
+            App("Notificações", "KOTLIN"),
+            App("Localização", "KOTLIN")
         )
 
         // Adapter recebe a lista e o callback de clique.
@@ -69,9 +72,17 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, SQLiteActivity::class.java)
                     startActivity(intent)
                 }
+                "Notificações" -> {
+                    val intent = Intent(this, NotificationsActivity::class.java)
+                    startActivity(intent)
+                }
+                "Localização"  -> {
+//                    val intent = Intent(this, LocationActivity::class.java)
+//                    startActivity(intent)
+                    }
+
             }
         }
-
         // LayoutManager: define orientação. Outras opções:
         //   - LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         //   - GridLayoutManager(this, 2)              // grade de 2 colunas

@@ -33,8 +33,7 @@ class SQLiteActivity : AppCompatActivity() {
         btnSalvar = findViewById(R.id.btnSalvar)
         recycler = findViewById(R.id.recyclerProdutos)
 
-        recycler.layoutManager =
-            LinearLayoutManager(this)
+        recycler.layoutManager = LinearLayoutManager(this)
 
         carregarProdutos()
 
@@ -60,7 +59,6 @@ class SQLiteActivity : AppCompatActivity() {
 
         val lista = dao.listar()
 
-        recycler.adapter =
-            ProdutoAdapter(lista)
+        recycler.adapter = ProdutoAdapter(lista)
     }
 }
