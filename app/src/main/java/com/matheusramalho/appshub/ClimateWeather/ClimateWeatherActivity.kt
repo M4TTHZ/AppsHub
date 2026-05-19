@@ -1,5 +1,7 @@
 package com.matheusramalho.appshub.ClimateWeather
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -7,8 +9,11 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.textfield.TextInputEditText
 import com.matheusramalho.appshub.ClimateWeather.Api.Service.RetrofitClient
 import com.matheusramalho.appshub.R
@@ -58,7 +63,7 @@ class ClimateWeatherActivity : AppCompatActivity() {
                 // Fechar teclado
                 etCidadeNome.clearFocus()
             } else {
-                Toast.makeText(this, "Digite o nome de uma cidade", Toast.LENGTH_SHORT).show()
+                verificarPermissao()
             }
         }
 
@@ -216,5 +221,62 @@ class ClimateWeatherActivity : AppCompatActivity() {
     private fun esconderResultados() {
         layoutResultados.visibility = View.GONE
         tvInstrucao.visibility = View.VISIBLE
+    }
+
+    // Buscar clima por Localização atual
+
+    private fun verificarPermissao() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            pegarLocalizacao()
+        } else {
+            solicitarPermissao.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
+
+    private val solicitarPermissao = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { permitido ->
+
+        if (permitido) {
+            pegarLocalizacao()
+        } else {
+
+            Toast.makeText(
+                this,
+                "Permissão negada",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun pegarLocalizacao() {
+
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener {
+                location ->
+            if (location != null) {
+
+                val latitude = location.latitude
+                val longitude = location.longitude
+
+                buscarClima(latitude, longitude, "Sua Localização", null)
+
+            } else {
+                mostrarErro("Não foi possível obter localização")
+            }
+        }
     }
 }

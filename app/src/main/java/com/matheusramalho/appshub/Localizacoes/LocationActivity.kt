@@ -37,7 +37,6 @@ class LocationActivity : AppCompatActivity() {
         ) {
             pegarLocalizacao()
         } else {
-
             solicitarPermissao.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
