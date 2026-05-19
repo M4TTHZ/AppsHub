@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.appshub.ClimateWeather.ClimateWeatherActivity
 import com.matheusramalho.appshub.Localizacoes.LocationActivity
 import com.matheusramalho.appshub.Notificacoes.NotificationsActivity
+import com.matheusramalho.appshub.RoomDatabase.ui.RoomDatabaseActivity
 import com.matheusramalho.appshub.SQLite.SQLiteActivity
 import com.matheusramalho.appshub.Sharedpreferences.SharedPreferencesActivity
 import kotlin.jvm.java
@@ -43,7 +44,8 @@ class MainActivity : AppCompatActivity() {
             App("Sharedpreferences", "KOTLIN"),
             App("SQLite", "KOTLIN"),
             App("Notificações", "KOTLIN"),
-            App("Localização", "KOTLIN")
+            App("Localização", "KOTLIN"),
+            App("Room database", "KOTLIN")
         )
 
         // Adapter recebe a lista e o callback de clique.
@@ -80,7 +82,11 @@ class MainActivity : AppCompatActivity() {
                 "Localização"  -> {
                     val intent = Intent(this, LocationActivity::class.java)
                     startActivity(intent)
-                    }
+                }
+                "Room database" -> {
+                    val intent = Intent(this, RoomDatabaseActivity::class.java)
+                    startActivity(intent)
+                }
 
             }
         }
